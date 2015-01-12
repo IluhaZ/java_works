@@ -2,7 +2,6 @@ package Player;
 
 import java.util.Scanner;
 
-import ChessExeptions.IllegalMoveExeption;
 import Color.Color;
 import Game.IGame;
 import GameState.GameState;
