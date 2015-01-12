@@ -4,7 +4,7 @@ import ChessExeptions.IllegalMoveExeption;
 import Move.AbstractMove;
 import Player.Player;
 
-public interface GameInterface {
+public interface IGame {
 	
 	void initGame(Player p1, Player p2);
 	
@@ -13,6 +13,10 @@ public interface GameInterface {
 	void finishGame();
 	
 	void updateGame();
+	
+	Player currentPlayer();
+	
+	boolean gameInRun();
 
 	
 }

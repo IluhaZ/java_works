@@ -5,7 +5,7 @@ import Color.Color;
 import Move.AbstractMove;
 import Player.Player;
 
-public abstract class AbstractGame implements GameInterface {
+public abstract class AbstractGame implements IGame {
 	
 	protected Player[] playerArray;
 	protected boolean gameRun; 
@@ -15,11 +15,11 @@ public abstract class AbstractGame implements GameInterface {
 		playerArray = new Player[numOfPlayers];
 	}
 
-	public void playGame(Color color, AbstractMove move)
-			throws IllegalMoveExeption {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void playGame(Color color, AbstractMove move) throws IllegalMoveExeption;
+
+	public abstract Player currentPlayer();
+
+	public abstract boolean gameInRun();
 
 	
 }

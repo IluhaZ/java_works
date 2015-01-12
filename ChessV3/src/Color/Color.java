@@ -4,6 +4,7 @@ public enum Color {
 	WHITE,
 	BLACK ,
 	NOCOLOR;
+	
 	public static Color oposite(Color color){
 		if(color == WHITE)
 			return BLACK;
@@ -11,4 +12,5 @@ public enum Color {
 			return WHITE;
 		return color;
 	}
+	
 }

@@ -4,6 +4,9 @@ public class Point {
 	public int line;
 	public int column;
 	
+	public Point() {
+		this(0,0);
+	}
 	public Point(int line, int column) {
 		this.line = line;
 		this.column = column;
@@ -43,6 +46,10 @@ public class Point {
 		if (line != other.line)
 			return false;
 		return true;
+	}
+	@Override
+	public String toString() {
+		return "Point [line=" + line + ", column=" + column + "]";
 	}
 	
 }

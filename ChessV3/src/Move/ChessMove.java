@@ -3,14 +3,14 @@ package Move;
 import Point.Point;
 
 public class ChessMove extends AbstractMove{
-	public Point pointSrc;
-	public Point pointDst;
+	public Point pointSrc = new Point();
+	public Point pointDst = new Point();
 	public ChessMove(String str) throws IllegalArgumentException{
 		move = str;
-		pointSrc.line = move.charAt(0) -'a';
-		pointSrc.column = move.charAt(1) - '0' - 1;
-		pointDst.line = move.charAt(2) -'a';
-		pointDst.column = move.charAt(3) - '0' - 1;
+		pointSrc.column = move.charAt(0) -'a';
+		pointSrc.line = move.charAt(1) - '0' - 1;
+		pointDst.column = move.charAt(2) -'a';
+		pointDst.line = move.charAt(3) - '0' - 1;
 		if(checkValidity() == false){
 			throw new IllegalArgumentException();
 		}

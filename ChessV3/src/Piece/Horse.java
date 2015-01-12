@@ -1,13 +1,13 @@
 package Piece;
 
-import Behaviour.XBeh;
+import Behaviour.HorseBeh;
 import Color.Color;
 
 public class Horse extends Piece {
 	
 	public Horse(Color color) {
 		super(color);
-		validBeh.add(new XBeh());
+		validBeh.add(new HorseBeh());
 	}
 
 	@Override

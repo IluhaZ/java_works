@@ -5,6 +5,7 @@ import java.util.Random;
 import Board.Board;
 import Board.ChessBoard;
 import ChessExeptions.IllegalMoveExeption;
+import Color.Color;
 import GameState.GameState;
 import Move.AbstractMove;
 import Player.Player;
@@ -21,10 +22,12 @@ public class ChessGame extends AbstractGame {
 	public void initGame(Player p1, Player p2) {
 		playerArray[0] = p1;
 		playerArray[1] = p2;
+		gameRun = true;
 		Random rn = new Random();
-		currentPlayer = rn.nextInt() % 2;
+		currentPlayer = Math.abs(rn.nextInt() % 2);
 		playerArray[currentPlayer].notifyPlayer(GameState.None, true);
 		playerArray[(currentPlayer + 1)%2].notifyPlayer(GameState.None, false);
+		System.out.println(board);
 	}
 	
 	@Override
@@ -33,10 +36,18 @@ public class ChessGame extends AbstractGame {
 		currentPlayer = (currentPlayer + 1) % 2;
 		playerArray[currentPlayer].notifyPlayer(gameState, true);
 		playerArray[(currentPlayer + 1) % 2].notifyPlayer(gameState, false);
+		System.out.println(board);
 	}
 	
+	@Override
+	public Player currentPlayer(){
+		return playerArray[currentPlayer];
+	}
 	
-
+	@Override
+	public boolean gameInRun() {
+		return gameRun;
+	}
 	@Override
 	public void finishGame() {
 		// TODO Auto-generated method stub
@@ -48,4 +59,13 @@ public class ChessGame extends AbstractGame {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public void playGame(Color color, AbstractMove move)
+			throws IllegalMoveExeption {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }

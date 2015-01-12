@@ -1,15 +1,15 @@
 package Player;
 
 import Color.Color;
-import Game.GameInterface;
+import Game.IGame;
 import GameState.GameState;
 
 public abstract class Player {
 	
-	protected GameInterface game;
+	protected IGame game;
 	protected boolean myTurn;
 	
-	public Player(GameInterface game) {
+	public Player(IGame game) {
 		this.game = game;
 	}
 	public abstract boolean makeMove();

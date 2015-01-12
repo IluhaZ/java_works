@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import ChessExeptions.IllegalMoveExeption;
 import Color.Color;
-import Game.GameInterface;
+import Game.IGame;
 import GameState.GameState;
 import Move.AbstractMove;
 import Move.ChessMove;
@@ -12,7 +12,8 @@ import Move.ChessMove;
 public class HumanPlayer extends Player{
 
 	private Color color;
-	public HumanPlayer(GameInterface game) {
+	Scanner input = new Scanner(System.in);
+	public HumanPlayer(IGame game) {
 		super(game);
 		// TODO Auto-generated constructor stub
 	}
@@ -32,33 +33,35 @@ public class HumanPlayer extends Player{
 		}
 		AbstractMove move;
 		boolean wrongMove = true;
-		Scanner input = new Scanner(System.in);
+		
 		while(wrongMove ){
 			try {
 				wrongMove = false;
-				System.out.print("make move \n ");
+				System.out.print(color == Color.WHITE ? "White":"Black");
+				System.out.println(" Player make move \n ");
 				String str = input.next();
 				move = new ChessMove(str);
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				//e.printStackTrace();
 				move = null;
 				wrongMove = true;
 				System.out.println("wrong string , try again\n");
+				
+			}
+			if(wrongMove == false) {
+				try{
+					
+					game.playGame(move);
+					
+				} catch(Exception ex){
+					ex.printStackTrace();
+					wrongMove = true;
+					System.out.println("wrong move , try again\n");
+				}
 			}
 			
-			try{
-				wrongMove = false;
-				
-				game.playGame(move);
-				
-			} catch(IllegalMoveExeption ex){
-				ex.printStackTrace();
-				wrongMove = true;
-				System.out.println("wrong string , try again\n");
-			}
-			//TODO: make another move
 		}
-		input.close();
+		
 		
 		return true;
 		
@@ -75,7 +78,11 @@ public class HumanPlayer extends Player{
 	}
 
 
-	
+	@Override
+	protected void finalize() throws Throwable {
+		input.close();
+		super.finalize();
+	}
 
 	
 }

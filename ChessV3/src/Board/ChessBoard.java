@@ -32,10 +32,27 @@ public class ChessBoard implements Board{
 	public GameState makeMove(Color color, AbstractMove move) throws IllegalMoveExeption {
 		Point srcPoint = move.getPointSrc();
 		Point dstPoint = move.getPointDst();
+		System.out.println(srcPoint);
+		System.out.println(dstPoint);
+		//TODO remove sysout
 		Piece srcPiece = board[srcPoint.line][srcPoint.column].getPiece();
 		Piece dstPiece = board[dstPoint.line][dstPoint.column].getPiece();
 		
 		if(srcPiece.getColor() != color) throw new IllegalMoveCollor();
+		
+		if(srcPiece.getColor() == Color.WHITE)
+			System.out.println("src W");
+		else if(srcPiece.getColor() == Color.BLACK)
+			System.out.println("src B");
+		else
+			System.out.println("dst Blank");
+		if(dstPiece.getColor() == Color.WHITE)
+			System.out.println("dst W");
+		else if(dstPiece.getColor() == Color.BLACK)
+			System.out.println("dst B");
+		else
+			System.out.println("src Blank");
+		//TODO remove sysout
 		if(srcPiece.getColor() == dstPiece.getColor()) throw new IllegalMoveCollor();
 		
 		List<Point> passList = srcPiece.getValidPass(srcPoint, dstPoint);
@@ -52,7 +69,7 @@ public class ChessBoard implements Board{
 
 	private GameState checkCheck(Point point) {
 		
-		return null;
+		return GameState.BlackInCheck;
 		
 	}
 
@@ -80,10 +97,10 @@ public class ChessBoard implements Board{
 
 	private boolean isForwordDest(Color color, Point srcPoint, Point dstPoint) throws IllegalMoveWrongMove {
 		if(color == Color.WHITE){
-			if(srcPoint.line != dstPoint.line + 1) throw new IllegalMoveWrongMove();
+			if(srcPoint.line + 1 != dstPoint.line) throw new IllegalMoveWrongMove();
 		}
 		else if(color == Color.BLACK){
-			if(srcPoint.line != dstPoint.line -1) throw new IllegalMoveWrongMove();
+			if(srcPoint.line - 1  != dstPoint.line) throw new IllegalMoveWrongMove();
 		}
 			
 		return false;
