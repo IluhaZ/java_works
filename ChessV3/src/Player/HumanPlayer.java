@@ -53,7 +53,7 @@ public class HumanPlayer extends Player{
 					game.playGame(move);
 					
 				} catch(Exception ex){
-					ex.printStackTrace();
+					//ex.printStackTrace();
 					wrongMove = true;
 					System.out.println("wrong move , try again\n");
 				}

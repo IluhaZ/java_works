@@ -57,7 +57,7 @@ public class ChessBoard implements Board{
 		
 		List<Point> passList = srcPiece.getValidPass(srcPoint, dstPoint);
 		for (Point point : passList) {
-			if(board[point.line][point.column].isEmpty()) throw new IllegalMovePathNotFree();
+			if(board[point.line][point.column].isNotEmpty()) throw new IllegalMovePathNotFree();
 		}
 		
 		legalMovePawn(srcPiece, dstPiece, srcPoint, dstPoint);
@@ -127,6 +127,8 @@ public class ChessBoard implements Board{
 		board[7][7] = new Square(new Rook(Color.BLACK));
 		
 		for (int i = 0; i < board.length; i++) {
+//			board[1][i] = new Square( new Blank(Color.NOCOLOR));
+//			board[6][i] = new Square( new Blank(Color.NOCOLOR));			
 			board[1][i] = new Square( new Pawn(Color.WHITE));
 			board[6][i] = new Square( new Pawn(Color.BLACK));
 			board[3][i] = new Square( new Blank(Color.NOCOLOR));

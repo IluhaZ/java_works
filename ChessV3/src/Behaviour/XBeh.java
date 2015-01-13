@@ -32,7 +32,7 @@ public class XBeh extends AbstractBehaviour{
 		
 		List<Point> ar = new ArrayList<Point>();
 		Point currPoint = new Point(src);
-		currPoint.MovePoint(dcolumn,dline);
+		currPoint.MovePoint(dline,dcolumn);
 		
 		while(!currPoint.equals(dst)){
 			ar.add(new Point(currPoint));
