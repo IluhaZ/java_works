@@ -30,6 +30,7 @@ public class PlusBeh extends AbstractBehaviour {
 		else
 			dcolumn = 0;
 		
+		
 		List<Point> ar = new ArrayList<Point>();
 		Point currPoint = new Point(src);
 		currPoint.MovePoint(dline, dcolumn);
