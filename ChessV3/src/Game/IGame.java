@@ -1,14 +1,14 @@
 package Game;
 
 import ChessExeptions.IllegalMoveExeption;
-import Move.AbstractMove;
+import Move.IMove;
 import Player.Player;
 
 public interface IGame {
 	
 	void initGame(Player p1, Player p2);
 	
-	void playGame( AbstractMove move) throws IllegalMoveExeption;
+	void playGame(IMove move) throws IllegalMoveExeption;
 	
 	void finishGame();
 	
@@ -17,6 +17,7 @@ public interface IGame {
 	Player currentPlayer();
 	
 	boolean gameInRun();
+
 
 	
 }

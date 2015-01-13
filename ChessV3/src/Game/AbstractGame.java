@@ -1,8 +1,10 @@
 package Game;
 
+import java.util.ArrayList;
+
 import ChessExeptions.IllegalMoveExeption;
 import Color.Color;
-import Move.AbstractMove;
+import Move.IMove;
 import Player.Player;
 
 public abstract class AbstractGame implements IGame {
@@ -15,11 +17,14 @@ public abstract class AbstractGame implements IGame {
 		playerArray = new Player[numOfPlayers];
 	}
 
-	public abstract void playGame(Color color, AbstractMove move) throws IllegalMoveExeption;
+	public abstract void playGame(Color color, IMove move) throws IllegalMoveExeption;
 
 	public abstract Player currentPlayer();
 
 	public abstract boolean gameInRun();
 
+	public void initGame(ArrayList<Player> players) {
+		
+	}
 	
 }

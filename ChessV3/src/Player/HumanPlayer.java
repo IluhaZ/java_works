@@ -5,17 +5,20 @@ import java.util.Scanner;
 import Color.Color;
 import Game.IGame;
 import GameState.GameState;
-import Move.AbstractMove;
-import Move.ChessMove;
+import Move.IMove;
+import Move.MoveFactory;
 
 public class HumanPlayer extends Player{
 
 	private Color color;
 	Scanner input = new Scanner(System.in);
+	
+	
 	public HumanPlayer(IGame game) {
 		super(game);
-		// TODO Auto-generated constructor stub
+		moveFactory = new MoveFactory();
 	}
+	
 	@Override
 	public void startGame() {
 		if(myTurn == true)
@@ -30,16 +33,21 @@ public class HumanPlayer extends Player{
 			System.out.println("not my turn");
 			return false;
 		}
-		AbstractMove move;
+		IMove move;
 		boolean wrongMove = true;
 		
 		while(wrongMove ){
+			
 			try {
 				wrongMove = false;
+				
 				System.out.print(color == Color.WHITE ? "White":"Black");
 				System.out.println(" Player make move \n ");
+				
 				String str = input.next();
-				move = new ChessMove(str);
+				move = moveFactory.getMove("chess");
+				move.setMove(str);
+				
 			} catch (Exception e) {
 				//e.printStackTrace();
 				move = null;
@@ -58,9 +66,7 @@ public class HumanPlayer extends Player{
 					System.out.println("wrong move , try again\n");
 				}
 			}
-			
 		}
-		
 		
 		return true;
 		
@@ -75,7 +81,6 @@ public class HumanPlayer extends Player{
 		this.myTurn = myTurn;
 		//TODO: implement gameState;
 	}
-
 
 	@Override
 	protected void finalize() throws Throwable {

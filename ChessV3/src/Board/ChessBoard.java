@@ -10,7 +10,7 @@ import ChessExeptions.IllegalMovePathNotFree;
 import ChessExeptions.IllegalMoveWrongMove;
 import Color.Color;
 import GameState.GameState;
-import Move.AbstractMove;
+import Move.IMove;
 import Piece.*;
 import Point.Point;
 import Square.*;
@@ -29,7 +29,7 @@ public class ChessBoard implements Board{
 	}
 
 	@Override
-	public GameState makeMove(Color color, AbstractMove move) throws IllegalMoveExeption {
+	public GameState makeMove(Color color, IMove move) throws IllegalMoveExeption {
 		Point srcPoint = move.getPointSrc();
 		Point dstPoint = move.getPointDst();
 		System.out.println(srcPoint);
@@ -40,18 +40,18 @@ public class ChessBoard implements Board{
 		
 		if(srcPiece.getColor() != color) throw new IllegalMoveCollor();
 		
-		if(srcPiece.getColor() == Color.WHITE)
-			System.out.println("src W");
-		else if(srcPiece.getColor() == Color.BLACK)
-			System.out.println("src B");
-		else
-			System.out.println("dst Blank");
-		if(dstPiece.getColor() == Color.WHITE)
-			System.out.println("dst W");
-		else if(dstPiece.getColor() == Color.BLACK)
-			System.out.println("dst B");
-		else
-			System.out.println("src Blank");
+//		if(srcPiece.getColor() == Color.WHITE)
+//			System.out.println("src W");
+//		else if(srcPiece.getColor() == Color.BLACK)
+//			System.out.println("src B");
+//		else
+//			System.out.println("dst Blank");
+//		if(dstPiece.getColor() == Color.WHITE)
+//			System.out.println("dst W");
+//		else if(dstPiece.getColor() == Color.BLACK)
+//			System.out.println("dst B");
+//		else
+//			System.out.println("src Blank");
 		//TODO remove sysout
 		if(srcPiece.getColor() == dstPiece.getColor()) throw new IllegalMoveCollor();
 		

@@ -7,7 +7,7 @@ import Board.ChessBoard;
 import ChessExeptions.IllegalMoveExeption;
 import Color.Color;
 import GameState.GameState;
-import Move.AbstractMove;
+import Move.IMove;
 import Player.Player;
 
 public class ChessGame extends AbstractGame {
@@ -30,8 +30,9 @@ public class ChessGame extends AbstractGame {
 		System.out.println(board);
 	}
 	
+	
 	@Override
-	public void playGame( AbstractMove move) throws IllegalMoveExeption{
+	public void playGame(IMove move) throws IllegalMoveExeption {
 		GameState gameState = board.makeMove(playerArray[currentPlayer].getColor(), move);
 		currentPlayer = (currentPlayer + 1) % 2;
 		playerArray[currentPlayer].notifyPlayer(gameState, true);
@@ -61,11 +62,9 @@ public class ChessGame extends AbstractGame {
 	}
 
 	@Override
-	public void playGame(Color color, AbstractMove move)
-			throws IllegalMoveExeption {
+	public void playGame(Color color, IMove move) throws IllegalMoveExeption {
 		// TODO Auto-generated method stub
 		
 	}
-
 	
 }
